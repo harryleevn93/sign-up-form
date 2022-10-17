@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" 
+        content="IE=edge">
+    <meta name="viewport" 
+        content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Forms</title>
+    <meta name="Author" 
+        content="Harry Lee"/>    
+    <meta name="Description" 
+        content="This Website is just for practice, I am not an author of this idea, but it writes on my code style. Ask directly authors in https://www.udemy.com/course/50-web-projects-with-html-css-and-javascript/ if you have some questions. Thank you"/>
+    <!-- Remove Comment if you need Fontawesome -->
+    <!-- <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" 
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" 
+        referrerpolicy="no-referrer" /> -->
+    <link rel="preconnect" 
+        href="https://fonts.googleapis.com">
+    <link rel="preconnect" 
+        href="https://fonts.gstatic.com" 
+        crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ========== Overall Settings ========== */
+        *, *::after, *::before{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            outline: none;
+            font-family: Quicksand, sans-serif;
+        }
+
+        html{
+            font-size: 62.5%;
+            background-color: palegoldenrod;
+        }
+
+        .container{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+        }
+
+        /* ========== Cover Page Settings ========== */
+        .container .form{
+            width: 100rem;
+            height: 70rem;
+            background-color: #eee;
+            border-radius: 3rem;
+            box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container .form .banner{
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-size: 1.2rem;
+            color: #fff;
+            width: 30rem;
+            z-index: 100;
+            transition: left 1.5s cubic-bezier(0.19,1,0.22,1);
+        }
+
+        .container.change .form .banner{
+            left: 20rem;
+        }
+
+        .container .form .banner h1{
+            font-size: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .container .form .banner p{
+            font-size: 2rem;
+        }
+
+        .container .slide-background{
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(318deg,  #34569a 0%,#7897d7 100%);
+            /* more at http://www.gradientsguru.com/ */
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            border-radius: 3rem 0 0 3rem;
+            z-index: 50;
+            transition: width 1.5s cubic-bezier(0.19,1,0.22,1);
+        }
+
+        .container.change .slide-background{
+            width: 40%;
+        }
+
+        .container .slide-background button{
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16rem;
+            height: 5rem;
+            background-color: transparent;
+            border: 0.1rem solid #fff;
+            border-radius: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
+        /* ========== Sign-Up Page Settings ========== */
+        .container .signup-form{
+            width: 60rem;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10rem 0;
+            transition: left 1.5s cubic-bezier(0.19,1,0.22,1);
+        }
+
+        .container.change .signup-form{
+            left: 40rem;
+        }
+
+        .container .signup-form h1{
+            font-size: 4rem;
+            color: #34569a;
+        }
+
+        .container .signup-form .social-media {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+        }
+
+        .container .signup-form .social-media a{
+            width: 4rem;
+            height: 4rem;
+            margin: 0.5rem 0 0.5rem 1rem;
+            border: 0.1rem solid #777;
+            border-radius: 50%;
+            color: #555;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container .signup-form .social-media a svg{
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+
+        .container .signup-form p{
+            font-size: 2rem;
+        }
+
+        .container .signup-form .input-group {
+            position: relative;
+        }
+
+        .container .signup-form .input-group svg{
+            position: absolute;
+            width: 1.5rem;
+            height: 1.5rem;
+            top: 50%;
+            left: 1rem;
+            transform: translateY(-50%);
+        }
+        
+        .container .signup-form .input-group input{
+            width: 28rem;
+            height: 5rem;
+            padding: 1rem 1rem 1rem 3.5rem;
+            background-color: #ddd;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Cover-page -->
+        <div class="form">
+            <div class="banner">
+                <h1> 
+                    Greetings, my Friend! 
+                </h1>
+                <p> 
+                    Thank you for comming here! 
+                </p>
+                <p> 
+                    May you sign up here to let us get familiar with you?
+                </p>
+            </div>
+        <div class = "slide-background">
+            <button
+                type = "sign-up-button"> Sign Me Up!
+            </button>
+        </div>
+
+        <!-- Signup Page -->
+        <form class = "signup-form">
+            <h1>
+                Registration Form:
+            </h1>
+            <div class = "social-media">
+                Sign up by:
+                <!-- Please load SVG file for not getting any interruption -->
+                <a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 320 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                        <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+                    </svg>
+                </a>
+                <a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                        <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                    </svg>
+                </a>
+                <a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                        <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/>
+                    </svg>
+                </a>
+            </div>
+            <p>
+                Not interested? May I ask your litle details?
+            </p>
+            <div class = "input-group">
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                    <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
+                </svg>
+                <input type="text" 
+                    placeholder="What's your name?">
+            </div>
+            <div class = "input-group">
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                    <path d="M256 64C150 64 64 150 64 256s86 192 192 192c17.7 0 32 14.3 32 32s-14.3 32-32 32C114.6 512 0 397.4 0 256S114.6 0 256 0S512 114.6 512 256v32c0 53-43 96-96 96c-29.3 0-55.6-13.2-73.2-33.9C320 371.1 289.5 384 256 384c-70.7 0-128-57.3-128-128s57.3-128 128-128c27.9 0 53.7 8.9 74.7 24.1c5.7-5 13.1-8.1 21.3-8.1c17.7 0 32 14.3 32 32v80 32c0 17.7 14.3 32 32 32s32-14.3 32-32V256c0-106-86-192-192-192zm64 192c0-35.3-28.7-64-64-64s-64 28.7-64 64s28.7 64 64 64s64-28.7 64-64z"/>
+                </svg>
+                <input type="text" 
+                    placeholder="What's your Email Address?">
+
+            </div>
+            <div class = "input-group">
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                    <path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/>
+                </svg>
+                <input type="text" 
+                    placeholder="What password do you want?">
+            </div>
+        </form>
+    </div>
+    <script>
+        const container = document.querySelector(".container");
+        const signup_button = document.querySelector(".slide-background button");
+        
+        // Expanded Toogle
+        signup_button.addEventListener("click", () => {
+            container.classList.toggle("change");
+        });
+    </script>
+</body>
+</html>
